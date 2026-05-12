@@ -1,15 +1,31 @@
-document.getElementById("counter-up").addEventListener("click", counterUp);
-document.getElementById("counter-down").addEventListener("click", counterDown);
-document.getElementById("counter-reset").addEventListener("click", counterReset);
-document.getElementById("counter-save").addEventListener("click", counterSave);
-document.getElementById("counter-load").addEventListener("click", counterLoad);
+const CountEl = document.getElementById("counter")
+const btnUp = document.getElementById("counter-up")
+const btnDown = document.getElementById("counter-down")
+const btnReset = document.getElementById("counter-reset")
+const btnSave = document.getElementById("counter-save")
+const btnLoad = document.getElementById("counter-load")
+const MsgEl = document.getElementById("message");
+
+btnUp.addEventListener("click", counterUp);
+btnDown.addEventListener("click", counterDown);
+btnReset.addEventListener("click", counterReset);
+btnSave.addEventListener("click", counterSave);
+btnLoad.addEventListener("click", counterLoad);
 
 let count = 0;
 
 counterLoad();
+console.log(count)
+
+function showMessage(text) {
+    MsgEl.innerHTML = text;
+    setTimeout(function () {
+        MsgEl.innerHTML = "";}, 3000);
+    }
+
 
 function updateCounter(){
-    document.getElementById("counter").textContent = count
+    CountEl.textContent = count
 }
 function counterUp(){
     count++
@@ -29,10 +45,15 @@ function counterReset(){
 }
 function counterSave(){
     localStorage.setItem("count", count);
-    console.log(count)
+    showMessage("Saved!")
 }
 function counterLoad(){
-    count = localStorage.getItem("count");
-    console.log(count)
+    saved = localStorage.getItem("count");
+    if (saved == null){
+        count = 0
+    }
+    else{
+    count = saved
+    }
     updateCounter()
 }
