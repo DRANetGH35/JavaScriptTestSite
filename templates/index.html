@@ -1,21 +1,23 @@
 {% from "bootstrap5/form.html" import render_form %}
 {% extends "base.html" %} {% block content %}
-<script src="static/counter.js"></script>
 <body>
 <div class="container" style="justify-content:center; padding: 20px;">
 <h1 id="counter">0</h1>
 <div style="padding: 10px;">
-    <button onclick="counterUp()" class="btn btn-secondary" id="counter-up">+</button>
-    <button onclick="counterDown()" class="btn btn-secondary" id="counter-down">-</button>
-    <button onclick="counterReset()" class="btn btn-secondary" id="counter-reset">Reset</button>
+    <button class="btn btn-secondary" id="counter-up">+</button>
+    <button class="btn btn-secondary" id="counter-down">-</button>
+    <button class="btn btn-secondary" id="counter-reset">Reset</button>
 </div>
 <div style="padding: 10px;">
-    <button onclick="saveCount()" class="btn btn-secondary" id="counter-save">Save</button>
-    <button onclick="loadCount()" class="btn btn-secondary" id="counter-load">Load</button>
+    <button class="btn btn-secondary" id="counter-save">Save</button>
+    <button class="btn btn-secondary" id="counter-load">Load</button>
 </div>
 </div>
+<script src="static/counter.js"></script>
 </body>
 
 {% include 'footer.html' %}
 
 {% endblock %}
+
+
