@@ -1,0 +1,24 @@
+{% from "bootstrap5/form.html" import render_form %}
+{% extends "base.html" %} {% block content %}
+<body>
+<div class="container" style="justify-content:center; padding: 20px;">
+<div>
+   <label for="task-input"></label><input class="form-control-sm" id="task-input"><button class="btn btn-secondary" id="add-task">Add task</button>
+
+</div>
+    <div>
+        <ul id="task-list">
+
+        </ul>
+    </div>
+<div>
+    <button class="btn btn-secondary">Clear All</button>
+</div>
+</div>
+
+<script src="static/to_do_list.js"></script>
+</body>
+
+{% include 'footer.html' %}
+
+{% endblock %}

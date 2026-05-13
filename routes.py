@@ -9,3 +9,7 @@ app = create_app()
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/to_do_list')
+def to_do_list():
+    return render_template('to_do_list.html')
