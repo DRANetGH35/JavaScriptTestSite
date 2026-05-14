@@ -1,10 +1,24 @@
     const AddTaskBtn = document.getElementById("add-task");
     const ClearTasksBtn = document.getElementById("clear-tasks");
     const TaskList = document.getElementById("task-list");
+    const Message = document.getElementById("message");
+    const TaskInput = document.getElementById("task-input");
     let tasks = [];
 
+    TaskInput.addEventListener("keydown", function(event){
+        if (event.key === "Enter"){
+            event.preventDefault();
+            AddTaskFunction();
+        }
+    })
     AddTaskBtn.addEventListener("click", AddTaskFunction);
     ClearTasksBtn.addEventListener("click", clearTasks);
+
+
+    function showMessage(text){
+        Message.innerHTML = text;
+        setTimeout(function(){Message.innerHTML = ""}, 3000);
+    }
 
     function saveTasks(){
         localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -19,6 +33,7 @@
         let taskInput = document.getElementById("task-input");
         let text = taskInput.value;
         if (text === "") {
+            showMessage("Must Enter a task!")
             return;
         }
         tasks.push(text)
