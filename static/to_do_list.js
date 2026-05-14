@@ -14,6 +14,10 @@
     AddTaskBtn.addEventListener("click", AddTaskFunction);
     ClearTasksBtn.addEventListener("click", clearTasks);
 
+    function completeTask(i){
+        const task = document.getElementById(`task_${i}`)
+        task.classList.add('disabled')
+    }
 
     function showMessage(text){
         Message.innerHTML = text;
@@ -36,6 +40,7 @@
             showMessage("Must Enter a task!")
             return;
         }
+        showMessage("Task saved")
         tasks.push(text)
         taskInput.value = "";
         saveTasks();
@@ -44,6 +49,7 @@
     function removeTask(i){
         console.log('removed');
         tasks.splice(i, 1);
+        showMessage("Task removed!")
         saveTasks();
         DisplayTasks();
     }
@@ -51,10 +57,11 @@
     function DisplayTasks(){
         let html = "";
         for (let i = 0; i < tasks.length; i++){
-            html += `<li>
-                    ${tasks[i]}
-                    <button type="button" class="btn btn-link" onclick="removeTask(${i})">x</button>
-                    </li>`;
+            html += `<div id="task_${i}" style="display:flex;" class="list-group-item">
+                    <input type="checkbox" class="form-check" onclick="completeTask(${i})">
+                    <p>${tasks[i]}</p>
+                    <a type="button" class="btn btn-link" onclick="removeTask(${i})">x</a>
+                    </div>`;
         }
         TaskList.innerHTML = html;
     }
