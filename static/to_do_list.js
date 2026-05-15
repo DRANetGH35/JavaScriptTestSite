@@ -77,7 +77,6 @@
         DisplayTasks();
     }
     function removeTask(i){
-        console.log('removed');
         tasks.splice(i, 1);
         showMessage("Task removed!")
         saveTasks();
@@ -92,7 +91,6 @@
     function DisplayTasks(){
         let html = "";
         filter_status = document.querySelector('input[name="filter"]:checked').id
-        console.log(filter_status)
         for (let i = 0; i < tasks.length; i++){
             //check if the task matches the filter
             if (filter_status == "All" || filter_status == tasks[i]['Status']){
