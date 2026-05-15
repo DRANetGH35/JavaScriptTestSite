@@ -3,6 +3,7 @@
     const TaskList = document.getElementById("task-list");
     const Message = document.getElementById("message");
     const TaskInput = document.getElementById("task-input");
+    const TestButton = document.getElementById('test-button');
     let tasks = [];
 
     TaskInput.addEventListener("keydown", function(event){
@@ -13,11 +14,30 @@
     })
     AddTaskBtn.addEventListener("click", AddTaskFunction);
     ClearTasksBtn.addEventListener("click", clearTasks);
+    TestButton.addEventListener('click', testFunction)
+
+    function testFunction(){
+        sortTasksAlphabetically();
+        DisplayTasks();
+    }
 
     function filterChanged(){
         DisplayTasks();
     }
-
+    function sortTasksAlphabetically(){
+        let n = tasks.length;
+        for (let i = 1; i < n; i++){
+            let j = i - 1;
+            let key = tasks[i];
+            while(j >= 0 && tasks[j]['name'].toLowerCase() > key['name'].toLowerCase()){
+                tasks[j + 1] = tasks[j];
+                j--;
+            }
+            tasks[j + 1] = key;
+        }
+        saveTasks();
+        DisplayTasks();
+    }
     function completeTask(i){
         if (tasks[i]['Status'] == "Active") {
             tasks[i]['Status'] = "Completed"
