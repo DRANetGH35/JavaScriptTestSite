@@ -15,8 +15,9 @@
     ClearTasksBtn.addEventListener("click", clearTasks);
 
     function completeTask(i){
-        const task = document.getElementById(`task_${i}`)
-        task.classList.add('disabled')
+        tasks[i]['completed'] = true;
+        saveTasks();
+        DisplayTasks();
     }
 
     function showMessage(text){
@@ -41,7 +42,7 @@
             return;
         }
         showMessage("Task saved")
-        tasks.push(text)
+        tasks.push({'name': text, 'completed': false})
         taskInput.value = "";
         saveTasks();
         DisplayTasks();
@@ -56,10 +57,14 @@
 
     function DisplayTasks(){
         let html = "";
+
         for (let i = 0; i < tasks.length; i++){
+            task_name = tasks[i]['name']
+            task_text_element = `<p>${task_name}</p>`
+            if (tasks[i]['completed']){task_text_element = `<s>${task_name}</s>`}
             html += `<div id="task_${i}" style="display:flex;" class="list-group-item">
                     <input type="checkbox" class="form-check" onclick="completeTask(${i})">
-                    <p>${tasks[i]}</p>
+                    ${task_text_element}
                     <a type="button" class="btn btn-link" onclick="removeTask(${i})">x</a>
                     </div>`;
         }
