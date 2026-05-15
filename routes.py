@@ -13,3 +13,7 @@ def index():
 @app.route('/to_do_list')
 def to_do_list():
     return render_template('to_do_list.html')
+
+@app.route('/modal_popup')
+def modal_popup():
+    return render_template('modal_popup.html')
