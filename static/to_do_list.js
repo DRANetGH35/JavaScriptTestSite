@@ -15,7 +15,7 @@
     ClearTasksBtn.addEventListener("click", clearTasks);
 
     function completeTask(i){
-        tasks[i]['completed'] = true;
+        tasks[i]['completed'] = !(tasks[i]['completed']);
         saveTasks();
         DisplayTasks();
     }
@@ -60,10 +60,14 @@
 
         for (let i = 0; i < tasks.length; i++){
             task_name = tasks[i]['name']
+            checkbox = `<input type="checkbox" class="form-check" onclick="completeTask(${i})">`
             task_text_element = `<p>${task_name}</p>`
-            if (tasks[i]['completed']){task_text_element = `<s>${task_name}</s>`}
+            if (tasks[i]['completed']){
+                task_text_element = `<s>${task_name}</s>`
+                checkbox = `<input type="checkbox" class="form-check" onclick="completeTask(${i})" checked>`
+            }
             html += `<div id="task_${i}" style="display:flex;" class="list-group-item">
-                    <input type="checkbox" class="form-check" onclick="completeTask(${i})">
+                    ${checkbox}
                     ${task_text_element}
                     <a type="button" class="btn btn-link" onclick="removeTask(${i})">x</a>
                     </div>`;
