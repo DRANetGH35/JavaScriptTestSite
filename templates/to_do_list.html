@@ -4,7 +4,17 @@
 <div class="container" style="justify-content:center; padding: 20px;">
 <div>
    <label for="task-input"></label><input class="form-control-sm" id="task-input"><button class="btn btn-secondary" id="add-task">Add task</button>
-
+<div class="btn-group-toggle my-2" data-toggle="buttons">
+    <label class="btn btn-secondary active">
+    <input type="radio" name="filter" id="All" autocomplete="off" checked onclick="filterChanged()"> All
+  </label>
+  <label class="btn btn-secondary">
+    <input type="radio" name="filter" id="Active" autocomplete="off" onclick="filterChanged()"> Active
+  </label>
+  <label class="btn btn-secondary">
+    <input type="radio" name="filter" id="Completed" autocomplete="off" onclick="filterChanged()"> Complete
+  </label>
+</div>
 </div>
     <div style="width:25%" class="list-group" id="task-list">
     </div>
