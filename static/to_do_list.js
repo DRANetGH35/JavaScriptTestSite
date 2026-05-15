@@ -63,7 +63,12 @@
         saveTasks();
         DisplayTasks();
     }
-
+    function editTask(i){
+        let taskInput = document.getElementById("task-input");
+        tasks[i]['name'] = taskInput.value;
+        saveTasks();
+        DisplayTasks();
+    }
     function DisplayTasks(){
         let html = "";
         filter_status = document.querySelector('input[name="filter"]:checked').id
@@ -82,6 +87,7 @@
                 html += `<div id="task_${i}" style="display:flex;" class="list-group-item">
                     ${checkbox}
                     ${task_text_element}
+                    <a type="button" class="btn btn-link" onclick="editTask(${i})" style="margin-left:5px">Edit</a>
                     <a type="button" class="btn btn-link" onclick="removeTask(${i})">x</a>
                     </div>`;
             }
