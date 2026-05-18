@@ -17,3 +17,7 @@ def to_do_list():
 @app.route('/modal_popup')
 def modal_popup():
     return render_template('modal_popup.html')
+
+@app.route('/form-validation')
+def form_validation():
+    return render_template('form-validation.html')
