@@ -43,14 +43,14 @@
 <div style="display:flex; justify-content: center;">
     <button class="btn btn-secondary" id="openBtn">Open</button>
     <div id="modal" class="modal-overlay">
-        <div class="modal-box">
+        <div class="modal-box" id="modal-box">
             <button id="closeBtn" class="btn btn-secondary modal-close">x</button>
             <h3>Hello!</h3>
             <p>This is a modal popup</p>
         </div>
     </div>
 </div>
-<script src="static/modal_popup.js"></script>
+<script type="module" src="static/modal_popup.js"></script>
 </body>
 
 {% include 'footer.html' %}
